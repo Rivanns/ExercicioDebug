@@ -17,12 +17,12 @@ public class Ex1 {
 		double somaAltura = 0;
 		int contador = 0;
 
-		double altura = -1;
+		double altura;
 		while (true) {
 			contador++;
 			System.out.println("Insira a altura");
 			altura = input.nextDouble();
-			if (altura > 0) {
+			if (altura != 0) {
 				somaAltura++;
 			} else {
 				break;
