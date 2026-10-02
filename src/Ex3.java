@@ -46,7 +46,7 @@ public class Ex3 {
 		int indiceDia = 0;
 
 		for (int i = 0; i < diasSemana.length; i++) {
-			if (diasSemana[i] == (diaEscolhido)) {
+			if (diasSemana[i].equalsIgnoreCase(diaEscolhido)) {
 				indiceDia = i;
 				break;
 			}
@@ -64,10 +64,29 @@ public class Ex3 {
 
 		soma = 0;
 		for (int i = 0; i < 7; i++) {
-			soma += temperaturas[hora][i];
+			soma += temperaturas[i][hora];
 		}
 		double mediaHora = soma / 7;
 		System.out.println("Media da temperatura as " + hora + " horas: " + mediaHora);
+
+		double maiorAmplitude = 0;
+		String diaMaiorAmplitude = "";
+		for (int d = 0; d < 7; d++) {
+			double maxDia = temperaturas[d][0];
+			double minDia = temperaturas[d][0];
+
+			for (double temp : temperaturas[d]) {
+				maxDia = Math.max(maxDia, temp);
+				minDia = Math.min(minDia, temp);
+			}
+
+			double amplitude = maxDia - minDia;
+			if (amplitude > maiorAmplitude) {
+				maiorAmplitude = amplitude;
+				diaMaiorAmplitude = diasSemana[d];
+			}
+		}
+		System.out.println("Maior Amplitude: " + maiorAmplitude + " (variação de " +  maiorAmplitude + " ºC)");
 
 	}
 }
